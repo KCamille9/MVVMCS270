@@ -1,0 +1,1 @@
+C:\Users\Camille\Documents\Visual Studio 2017\Projects\FirstProjectCS27\CSUnitTests\MVVMExample\MVVMExample.csproj;x86

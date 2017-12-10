@@ -1,0 +1,122 @@
+﻿<Page
+    x:Class="MVVMExample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MVVMExample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Width="652.625" Height="475.833">
+
+    <Page.DataContext>
+        <local:MainViewModel/>
+    </Page.DataContext>
+
+    <Grid Background="White" Margin="0,0,-0.333,-88.333" >
+        <Pivot Title="">
+            <PivotItem Header="Customer">
+                <Grid>
+
+                    <Grid HorizontalAlignment="Left" Height="340" Margin="10,20,0,0" VerticalAlignment="Top" Width="139">
+
+                        <Button x:ConnectionId='14' x:Name="AddButton" Command="{Binding AddButtonClicked}"  Content="Add" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Width="85"/>
+                        <Button x:ConnectionId='15' x:Name="DeleteButton" Command="{Binding DeleteButtonClicked, Mode=TwoWay}" IsEnabled="{Binding isPersonSelected, Mode=TwoWay}" Content="Delete" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="85"/>
+                        <Button x:ConnectionId='16' x:Name="EditButton" Command="{Binding EditButtonClicked, Mode=TwoWay}" IsEnabled="{Binding isPersonSelected, Mode=TwoWay}" Content="Edit" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Width="85" />
+                        <Button Content="Save" Command ="{Binding SaveButtonClicked}" HorizontalAlignment="Left" Margin="35,239,0,70" VerticalAlignment="Center" Height="31" Width="60" FontSize="9" RenderTransformOrigin="4.421,0.515"/>
+                        <Button x:ConnectionId='17' x:Name="SearchButton" Command="{Binding SearchButtonClicked, Mode=TwoWay}" IsEnabled="{Binding isSearchTextFilled, Mode=TwoWay}" Content="Search" HorizontalAlignment="Left" Margin="10,298,0,0" VerticalAlignment="Top" Width="85" />
+                    </Grid>
+
+
+                    <Grid HorizontalAlignment="Left" Height="330" Margin="154,20,0,0" VerticalAlignment="Top" Width="489">
+
+                        <TextBox x:ConnectionId='10' x:Name="NameField" Text="{Binding NameX, Mode=TwoWay}" Margin="2,89,300,209" />
+                        <TextBox x:ConnectionId='11' x:Name="AgeField" Text="{Binding AgeX, Mode=TwoWay}" Margin="2,171,302,126" Background="#66FFFFFF"/>
+                        <TextBox x:ConnectionId='12' x:Name="ProffField" Text="{Binding ProfessionX, Mode=TwoWay}" Margin="0,259,302,39"/>
+                        <ListView x:ConnectionId='13' x:Name="PeopleListView" 
+                      ItemsSource="{Binding PersonList}"
+                      SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
+                      HorizontalAlignment="Left" 
+                      Height="272" Margin="237,48,0,0" 
+                      VerticalAlignment="Top" 
+                      Width="242">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Sentence}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <TextBlock HorizontalAlignment="Left" Margin="0,52,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="0,146,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="2,234,0,0" TextWrapping="Wrap" Text="Profession" VerticalAlignment="Top"/>
+                    </Grid>
+
+                    <AutoSuggestBox 
+                    QueryIcon="Find"
+                    Text="{Binding SearchBoxText, Mode=TwoWay}" 
+                    HorizontalAlignment="Left" 
+                    Height="44" 
+                    Margin="10,365,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="179">
+
+                    </AutoSuggestBox>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Airplane">
+                <Grid>
+                    <Grid HorizontalAlignment="Left" Height="340" Margin="10,20,0,0" VerticalAlignment="Top" Width="139">
+
+                        <Button x:ConnectionId='5' x:Name="AddButton2" Command="{Binding AddButton2Clicked, Mode=TwoWay}" Content="Add" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Width="85"/>
+                        <Button x:ConnectionId='6' x:Name="DeleteButton2" Command="{Binding DeleteButton2Clicked, Mode=TwoWay}" Content="Delete" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="85"/>
+                        <Button x:ConnectionId='7' x:Name="EditButton2" Command="{Binding EditButton2Clicked, Mode=TwoWay}" Content="Edit" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Width="85" />
+                        <Button x:ConnectionId='8' x:Name="SaveButton" Content="Save" Command="{Binding SaveButton2Clicked}" HorizontalAlignment="Left" Margin="44,239,0,70" VerticalAlignment="Center" Height="31" Width="55" FontSize="10"/>
+                        <Button x:ConnectionId='9' x:Name="SearchButton2" Command="{Binding SearchButton2Clicked, Mode=TwoWay}" Content="Search" HorizontalAlignment="Left" Margin="10,298,0,0" VerticalAlignment="Top" Width="85" />
+
+                    </Grid>
+
+                    <Grid HorizontalAlignment="Left" Height="330" Margin="154,20,0,0" VerticalAlignment="Top" Width="489">
+
+                        <TextBox x:ConnectionId='1' x:Name="NameField2" Text="{Binding CompanyName, Mode=TwoWay}" Margin="2,89,300,209"/>
+                        <TextBox x:ConnectionId='2' x:Name="AgeField2" Text="{Binding NumOfPlanes, Mode=TwoWay}" Margin="2,171,302,126"/>
+                        <TextBox x:ConnectionId='3' x:Name="ProofField" Text="{Binding TypeOfPlanes, Mode=TwoWay}" Margin="0,259,302,39"/>
+
+                        <ListView x:ConnectionId='4' x:Name="AirPlaneListView" 
+                      ItemsSource="{Binding AirPlaneList}"
+                      SelectedItem="{Binding SelectedAirPlane, Mode=TwoWay}"
+                      HorizontalAlignment="Left" 
+                      Height="272" Margin="237,48,0,0" 
+                      VerticalAlignment="Top" 
+                      Width="242">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Sentence}"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <TextBlock  HorizontalAlignment="Left" Margin="0,52,0,0" TextWrapping="Wrap" Text="Company Name" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="0,146,0,0" TextWrapping="Wrap" Text="Number of Planes" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="2,234,0,0" TextWrapping="Wrap" Text="Type of Plane" VerticalAlignment="Top"/>
+                    </Grid>
+                    <AutoSuggestBox 
+                    QueryIcon="Find"
+                    Text="{Binding SearchBoxText2, Mode=TwoWay}" 
+                    HorizontalAlignment="Left" 
+                    Height="44" 
+                    Margin="10,365,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="179">
+
+                    </AutoSuggestBox>
+
+
+                </Grid>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+
+</Page>
+
